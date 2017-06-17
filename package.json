@@ -1,0 +1,64 @@
+{
+  "name": "telegraph",
+  "productName": "telegraph",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm run build-sw && electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "eslint src",
+    "build-sw": "browserify src/service-worker-src.js > src/service-worker.js"
+  },
+  "keywords": [],
+  "author": "jkleinsc",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {},
+      "electronWinstallerConfig": {
+        "name": "telegraph"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "telegraph"
+      }
+    }
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "devtron": "^1.4.0",
+    "electron-prebuilt-compile": "1.7.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "pouchdb": "6.2.0",
+    "worker-pouch": "git+https://github.com/jkleinsc/worker-pouch.git"
+  }
+}
