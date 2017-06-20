@@ -15713,7 +15713,6 @@ module.exports = class {
         console.log('DB SETUP DONE', messagesDb);
         this.messagesDb = messagesDb;
         this._getAllMessages();
-        this._listenForChanges();
         let addButton = document.getElementById('addButton');
         addButton.addEventListener('click', () => this._addMessage());
         let syncButton = document.getElementById('syncButton');
@@ -15793,6 +15792,7 @@ module.exports = class {
     if (message.type === 'remotesync') {
       if (message.success) {
         this._setOnlineStatus(true);
+        this._getAllMessages();
         let messageList = document.getElementById('messageList');
         let icons = messageList.getElementsByClassName('badge');
         Array.prototype.forEach.call(icons, (icon) => {
@@ -15805,26 +15805,13 @@ module.exports = class {
     }
   }
 
-  _listenForChanges() {
-    let messageList = document.getElementById('messageList');
-    this.messagesDb.changes({
-      since: 'now',
-      live: true,
-      include_docs: true
-    }).on('change', (change) => {
-      this._addMessageToList(change.doc, messageList);
-    }).on('error', (err) => {
-      console.log('Error on db change listener: ', err);
-    });
-  }
-
   _requestSync() {
     this.db.requestSync();
   }
 
-  _setOnlineStatus(isOnline) {
+  _setOnlineStatus() {
     let onlineStateEl = document.getElementById('onlineState');
-    if (isOnline) {
+    if (navigator.onLine) {
       onlineStateEl.className = onlineStateEl.className.replace('label-warning', 'label-success');
       onlineStateEl.lastChild.textContent = ' Online';
     } else {
