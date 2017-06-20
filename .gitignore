@@ -1,2 +1,9 @@
+_replicator
+_users
+config.json
+log.txt
+messages
 node_modules
 out
+pouch__all_dbs__
+pushinfo

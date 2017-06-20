@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.use('/bootstrap', express.static('../node_modules/bootstrap/dist/'));
+app.use('/bootstrap', express.static('node_modules/bootstrap/dist/'));
 
 app.use('/db', expressPouch);
 
