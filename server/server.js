@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-
+app.use('/bootstrap', express.static('../node_modules/bootstrap/dist/'));
 
 app.use('/db', expressPouch);
 
@@ -33,14 +33,11 @@ function returnError(message, code, res) {
 
 app.post('/save-subscription/', jsonParser, (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  console.log('in save subscription, body is:', req.body);
   if (!req.body || !req.body.subscription.endpoint) {
     returnError('Bad subscription', 400, res);
   } else {
     let subInfo = req.body;
-    console.log('Got good subscription');
     pushDB.post(subInfo).then((body) => {
-      console.log('saved subscription:', body);
       res.send(JSON.stringify(body));
     }).catch((err) => {
       console.log('Error saving subscription:', err);

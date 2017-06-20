@@ -45,6 +45,7 @@
     }
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "electron-compile": "^6.4.1"
   },
   "devDependencies": {
