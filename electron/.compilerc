@@ -10,11 +10,10 @@
             "env",
             {
               "targets": {
-                "electron": 1.6
+                "electron": "1.7.1"
               }
             }
-          ],
-          "react"
+          ]
         ],
         "plugins": [
           "transform-async-to-generator"
@@ -29,11 +28,10 @@
             "env",
             {
               "targets": {
-                "electron": 1.6
+                "electron": "1.7.1"
               }
             }
-          ],
-          "react"
+          ]
         ],
         "plugins": [
           "transform-async-to-generator"

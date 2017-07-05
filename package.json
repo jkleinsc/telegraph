@@ -11,6 +11,7 @@
   "author": "John Kleinschmidt",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-env": "^1.5.2",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "express": "^4.15.3",
